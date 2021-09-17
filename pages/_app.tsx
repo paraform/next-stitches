@@ -1,9 +1,13 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { globalStyles } from "../stitches.config";
+import { ThemeProvider } from "next-themes";
+import { globalStyles, themes } from "../stitches.config";
 
 function MyApp({ Component, pageProps }: AppProps) {
   globalStyles();
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider attribute="class" themes={themes} defaultTheme="system">
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 export default MyApp;

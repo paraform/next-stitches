@@ -13,12 +13,17 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      gray400: "gainsboro",
-      gray500: "lightgray",
+      white: "white",
+      black: "black",
+      // Semantic Colors
+      background: "$white",
+      foreground: "$black",
     },
   },
   media: {
-    bp1: "(min-width: 480px)",
+    bp1: "(min-width: 640px)",
+    bp2: "(min-width: 768px)",
+    bp3: "(min-width: 1024px)",
   },
   utils: {
     m: (value: Stitches.PropertyValue<"margin">) => ({
@@ -68,6 +73,27 @@ export const {
   },
 });
 
+export const darkTheme = createTheme("dark", {
+  colors: {
+    // Semantic Colors
+    background: "$black",
+    foreground: "$white",
+  },
+});
+
+export const themes = ["light", darkTheme];
+
 export const globalStyles = globalCss({
   "*": { margin: 0, padding: 0 },
+
+  "html, body": {
+    background: "$background",
+    color: "$foreground",
+    margin: 0,
+  },
+
+  "::selection": {
+    backgroundColor: "$foreground",
+    color: "$background",
+  },
 });
