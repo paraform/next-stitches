@@ -13,11 +13,8 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      white: "white",
       black: "black",
-      // Semantic Colors
-      background: "$white",
-      foreground: "$black",
+      white: "white",
     },
   },
   media: {
@@ -73,7 +70,15 @@ export const {
   },
 });
 
-export const darkTheme = createTheme("dark", {
+export const lightTheme = createTheme("light-theme", {
+  colors: {
+    // Semantic Colors
+    background: "$white",
+    foreground: "$black",
+  },
+});
+
+export const darkTheme = createTheme("dark-theme", {
   colors: {
     // Semantic Colors
     background: "$black",
@@ -81,15 +86,14 @@ export const darkTheme = createTheme("dark", {
   },
 });
 
-export const themes = ["light", darkTheme];
+export const themes = [lightTheme, darkTheme];
 
 export const globalStyles = globalCss({
   "*": { margin: 0, padding: 0 },
 
-  "html, body": {
-    background: "$background",
+  "body,[class*='-theme']": {
+    backgroundColor: "$background",
     color: "$foreground",
-    margin: 0,
   },
 
   "::selection": {

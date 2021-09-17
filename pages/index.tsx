@@ -21,7 +21,7 @@ const Button = styled("button", {
 
 const Home: NextPage = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
 
@@ -37,15 +37,18 @@ const Home: NextPage = () => {
 
       <main>
         <Button>Button</Button>
-        <p>Current theme is: {resolvedTheme}</p>
+        <p>Current theme is: {theme}</p>
         <Box css={{ display: "inline-block" }}>
           {theme !== undefined && (
             <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-              <option value="dark">Dark Theme</option>
-              <option value="light">Light Theme</option>
+              <option value="dark-theme">Dark Theme</option>
+              <option value="light-theme">Light Theme</option>
               <option value="system">System Theme</option>
             </select>
           )}
+        </Box>
+        <Box className={theme == "light-theme" ? "dark-theme" : "light-theme"}>
+          <Button>Button</Button>
         </Box>
       </main>
     </div>
