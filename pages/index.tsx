@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "../stitches.config";
 import { useTheme } from "next-themes";
 
 const Box = styled("div", {
+  backgroundColor: "$background",
+  color: "$foreground",
   boxSizing: "border-box",
 });
 
@@ -21,7 +23,7 @@ const Button = styled("button", {
 
 const Home: NextPage = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
 
@@ -37,17 +39,17 @@ const Home: NextPage = () => {
 
       <main>
         <Button>Button</Button>
-        <p>Current theme is: {theme}</p>
+        <p>Current theme is: {resolvedTheme}</p>
         <Box css={{ display: "inline-block" }}>
           {theme !== undefined && (
             <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-              <option value="dark-theme">Dark Theme</option>
-              <option value="light-theme">Light Theme</option>
+              <option value="dark">Dark Theme</option>
+              <option value="light">Light Theme</option>
               <option value="system">System Theme</option>
             </select>
           )}
         </Box>
-        <Box className={theme == "light-theme" ? "dark-theme" : "light-theme"}>
+        <Box className={resolvedTheme == lightTheme ? darkTheme : lightTheme}>
           <Button>Button</Button>
         </Box>
       </main>

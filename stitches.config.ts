@@ -92,7 +92,7 @@ export const {
   },
 });
 
-export const lightTheme = createTheme("light-theme", {
+export const lightTheme = createTheme("light", {
   colors: {
     // Semantic Colors
     background: "$white",
@@ -100,7 +100,7 @@ export const lightTheme = createTheme("light-theme", {
   },
 });
 
-export const darkTheme = createTheme("dark-theme", {
+export const darkTheme = createTheme("dark", {
   colors: {
     // Semantic Colors
     background: "$black",
@@ -112,7 +112,7 @@ export const themes = [lightTheme, darkTheme];
 
 type CSS = Stitches.CSS<typeof config>;
 
-export const reset: Record<string, CSS> = {
+export const reset: Record<string, Stitches.CSS> = {
   html: {
     lineHeight: 1.15,
     "-webkit-text-size-adjust": "100%",
@@ -245,9 +245,10 @@ export const reset: Record<string, CSS> = {
 export const globalStyles = globalCss(reset, {
   "*": { margin: 0, padding: 0 },
 
-  "body,[class*='-theme']": {
-    backgroundColor: "$background",
+  "html, body": {
+    background: "$background",
     color: "$foreground",
+    margin: 0,
   },
 
   "::selection": {
