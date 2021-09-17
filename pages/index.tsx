@@ -37,6 +37,7 @@ const Home: NextPage = () => {
 
       <main>
         <Button>Button</Button>
+        <p>Current theme is: {resolvedTheme}</p>
         <Box css={{ display: "inline-block" }}>
           {theme !== undefined && (
             <select value={theme} onChange={(e) => setTheme(e.target.value)}>
