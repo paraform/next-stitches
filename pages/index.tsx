@@ -17,7 +17,14 @@ const Button = styled("button", {
   fontSize: "13px",
   p: "10px 15px",
   "&:hover": {
+    cursor: "pointer",
     backgroundColor: "lightgray",
+  },
+});
+
+const Select = styled("select", {
+  "&:hover": {
+    cursor: "pointer",
   },
 });
 
@@ -42,11 +49,11 @@ const Home: NextPage = () => {
         <p>Current theme is: {resolvedTheme}</p>
         <Box css={{ display: "inline-block" }}>
           {theme !== undefined && (
-            <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+            <Select value={theme} onChange={(e) => setTheme(e.target.value)}>
               <option value="dark">Dark Theme</option>
               <option value="light">Light Theme</option>
               <option value="system">System Theme</option>
-            </select>
+            </Select>
           )}
         </Box>
         <Box className={resolvedTheme == lightTheme ? darkTheme : lightTheme}>
