@@ -1,25 +1,14 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { darkTheme, lightTheme, styled } from "../stitches.config";
+import { darkTheme, lightTheme, styled } from "stitches.config";
 import { useTheme } from "next-themes";
+import { Button } from "@/components/Button";
 
 const Box = styled("div", {
   backgroundColor: "$background",
   color: "$foreground",
   boxSizing: "border-box",
-});
-
-const Button = styled("button", {
-  backgroundColor: "$foreground",
-  color: "$background",
-  borderRadius: "9999px",
-  fontSize: "13px",
-  p: "10px 15px",
-  "&:hover": {
-    cursor: "pointer",
-    backgroundColor: "lightgray",
-  },
 });
 
 const Select = styled("select", {

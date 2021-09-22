@@ -110,7 +110,7 @@ export const darkTheme = createTheme("dark", {
 
 export const themes = [lightTheme, darkTheme];
 
-type CSS = Stitches.CSS<typeof config>;
+export type CSS = Stitches.CSS<typeof config>;
 
 export const reset: Record<string, Stitches.CSS> = {
   html: {
